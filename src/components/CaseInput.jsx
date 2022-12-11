@@ -9,7 +9,7 @@ const CaseInput = ({ label, value, onChange, name }) => {
           label={label}
           value={value}
           onChange={onChange}
-          name={label}
+          name={name}
           fullWidth
         />
       </Box>
