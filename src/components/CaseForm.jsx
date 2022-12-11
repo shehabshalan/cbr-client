@@ -28,7 +28,7 @@ const CaseForm = ({ setResources }) => {
     ND: "",
   });
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    setForm({ ...form, [e.target.name]: Number(e.target.value) });
   };
 
   const handleSubmit = (e) => {
@@ -39,17 +39,7 @@ const CaseForm = ({ setResources }) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        RRI: 2,
-        TR: 1,
-        SP: 1,
-        PC: 3,
-        AQP: 7,
-        IR: 1,
-        NI: 650,
-        FR: 1,
-        ND: 6,
-      }),
+      body: JSON.stringify(form),
     })
       .then((res) => res.json())
       .then((data) => {
