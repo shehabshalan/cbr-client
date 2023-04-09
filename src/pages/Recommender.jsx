@@ -1,7 +1,5 @@
-import React from "react";
-
 const Recommender = () => {
-  return <div>Recommender </div>;
+  return;
 };
 
 export default Recommender;

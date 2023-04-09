@@ -3,10 +3,9 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import Recommender from "./pages/Recommender";
 import Builder from "./pages/Builder";
 import Library from "./pages/Library";
-import About from "./Pages/About";
+import About from "./pages/About";
 import { Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout";
-import "./App.css";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {

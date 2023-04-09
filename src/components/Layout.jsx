@@ -13,7 +13,6 @@ import ListItemText from "@mui/material/ListItemText";
 import { MdMenu } from "react-icons/md";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
 import { Link } from "@mui/material";
 const drawerWidth = 240;
@@ -69,7 +68,7 @@ function Layout(props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box>
       <CssBaseline />
       <AppBar component="nav">
         <Toolbar>
@@ -127,7 +126,13 @@ function Layout(props) {
       </Box>
       <Box component="main" sx={{ p: 3 }}>
         <Toolbar />
-        {props.children}
+        <Box
+          sx={{
+            p: 3,
+          }}
+        >
+          {props.children}
+        </Box>
       </Box>
     </Box>
   );
