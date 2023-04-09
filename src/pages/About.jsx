@@ -1,10 +1,19 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Paper, Typography } from "@mui/material";
 import React from "react";
 import BoxBorder from "../components/BoxBorder";
 
 const About = () => {
   return (
-    <BoxBorder>
+    <Paper
+      sx={{
+        p: 4,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        mb: 2,
+      }}
+    >
       <Box sx={{ mb: 4 }}>
         <Typography variant="h5">About</Typography>
         <Typography variant="body1">
@@ -23,7 +32,7 @@ const About = () => {
           are similar to the one you entered.
         </Typography>
       </Box>
-    </BoxBorder>
+    </Paper>
   );
 };
 
