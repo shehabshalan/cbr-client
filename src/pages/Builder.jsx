@@ -11,7 +11,7 @@ import {
   VACCINE_POLICIES,
   VACCINATED_POPULATION,
 } from "../utils/constants";
-import { Stack } from "@mui/material";
+import { Autocomplete, Stack } from "@mui/material";
 
 const schema = Yup.object().shape({
   start_date: Yup.date().required("Required"),
@@ -91,7 +91,24 @@ const Builder = () => {
           helperText={formik.touched.end_date && formik.errors.end_date}
         />
       </Stack>
-      <TextField
+      <Autocomplete
+        id="city"
+        name="city"
+        options={CITIES}
+        getOptionLabel={(option) => option}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            label="City"
+            value={formik.values.city}
+            error={formik.touched.city && Boolean(formik.errors.city)}
+            helperText={formik.touched.city && formik.errors.city}
+          />
+        )}
+        onChange={(_, value) => formik.setFieldValue("city", value)}
+      />
+
+      {/* <TextField
         fullWidth
         id="city"
         name="city"
@@ -107,7 +124,7 @@ const Builder = () => {
             {city}
           </MenuItem>
         ))}
-      </TextField>
+      </TextField> */}
       <TextField
         fullWidth
         id="problem_start_number_of_active_cases"
@@ -125,6 +142,7 @@ const Builder = () => {
           formik.errors.problem_start_number_of_active_cases
         }
       />
+
       <TextField
         fullWidth
         id="problem_start_number_of_icu_active_cases"
