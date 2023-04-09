@@ -8,7 +8,6 @@ import MenuItem from "@mui/material/MenuItem";
 
 import { Autocomplete, Stack } from "@mui/material";
 import { useMemo } from "react";
-import { useCreateRecommendation } from "../hooks/useCreateRecommendation";
 
 const schema = Yup.object().shape({
   start_date: Yup.date().required("Required"),
@@ -20,8 +19,7 @@ const schema = Yup.object().shape({
   problem_vaccinated_population: Yup.string().required("Required"),
 });
 
-const RecommenderForm = () => {
-  const { mutate: createRecommendation, isLoading } = useCreateRecommendation();
+const RecommenderForm = ({ createRecommendation, isLoading }) => {
   const formik = useFormik({
     initialValues: {
       start_date: "",
@@ -38,13 +36,13 @@ const RecommenderForm = () => {
         values,
         {
           onSuccess: () => {
-            formik.resetForm();
-            alert("Case created successfully!");
+            // scroll to the top of the page
+            window.scrollTo(0, 0);
           },
         },
         {
           onError: () => {
-            alert("Failed to create case!");
+            alert("Failed to create a recommendation!");
           },
         }
       );
