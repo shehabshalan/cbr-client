@@ -11,7 +11,7 @@ import {
   VACCINE_POLICIES,
   VACCINATED_POPULATION,
 } from "../utils/constants";
-import { Alert, Autocomplete, Stack, Typography } from "@mui/material";
+import { Autocomplete, Stack } from "@mui/material";
 import { useCreateCase } from "../hooks/useCreateCase";
 import { useMemo } from "react";
 
@@ -108,23 +108,13 @@ const CaseBuilderForm = () => {
 
   return (
     <Paper
-      component="form"
       sx={{
-        maxWidth: 900,
-        margin: "auto",
         p: 4,
-        display: "flex",
-        flexDirection: "column",
-        gap: 3,
       }}
+      component="form"
       onSubmit={formik.handleSubmit}
     >
-      <Alert severity="info">
-        <Typography variant="body1">
-          Use the form below to build a case.
-        </Typography>
-      </Alert>
-      <Stack direction="row" spacing={2}>
+      <Stack direction="row" spacing={2} mb={3}>
         <TextField
           fullWidth
           id="start_date"
@@ -151,6 +141,7 @@ const CaseBuilderForm = () => {
         />
       </Stack>
       <Autocomplete
+        sx={{ mb: 3 }}
         id="city"
         name="city"
         options={memoizedCities}
@@ -166,7 +157,7 @@ const CaseBuilderForm = () => {
         )}
         onChange={(_, value) => formik.setFieldValue("city", value)}
       />
-      <Stack direction="row" spacing={2}>
+      <Stack direction="row" spacing={2} mb={3}>
         <TextField
           fullWidth
           id="problem_start_number_of_active_cases"
@@ -202,7 +193,7 @@ const CaseBuilderForm = () => {
           }
         />
       </Stack>
-      <Stack direction="row" spacing={2}>
+      <Stack direction="row" spacing={2} mb={3}>
         <TextField
           fullWidth
           id="problem_start_number_of_icu_active_cases"
@@ -239,7 +230,7 @@ const CaseBuilderForm = () => {
         />
       </Stack>
 
-      <Stack direction="row" spacing={2}>
+      <Stack direction="row" spacing={2} mb={3}>
         <TextField
           fullWidth
           id="problem_start_number_of_deaths"
@@ -276,6 +267,7 @@ const CaseBuilderForm = () => {
         />
       </Stack>
       <TextField
+        sx={{ mb: 3 }}
         fullWidth
         id="problem_vaccinated_population"
         name="problem_vaccinated_population"
@@ -295,6 +287,7 @@ const CaseBuilderForm = () => {
         {memoizedVaccinatedPopulation}
       </TextField>
       <TextField
+        sx={{ mb: 3 }}
         fullWidth
         id="solution_lockdown_policy_level"
         name="solution_lockdown_policy_level"
@@ -315,6 +308,7 @@ const CaseBuilderForm = () => {
       </TextField>
 
       <TextField
+        sx={{ mb: 3 }}
         fullWidth
         id="solution_mask_policy_level"
         name="solution_mask_policy_level"
@@ -335,6 +329,7 @@ const CaseBuilderForm = () => {
       </TextField>
 
       <TextField
+        sx={{ mb: 3 }}
         fullWidth
         id="solution_vaccine_policy_level"
         name="solution_vaccine_policy_level"
