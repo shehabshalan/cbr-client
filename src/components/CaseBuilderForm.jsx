@@ -349,7 +349,13 @@ const CaseBuilderForm = () => {
         {memoizedVaccinePolicies}
       </TextField>
 
-      <Button color="primary" variant="contained" fullWidth type="submit">
+      <Button
+        color="primary"
+        variant="contained"
+        fullWidth
+        type="submit"
+        disabled={isLoading}
+      >
         Submit
       </Button>
     </Paper>
