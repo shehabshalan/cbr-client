@@ -1,7 +1,20 @@
 export const LOCKDOWN_POLICIES = [0, 1, 2, 3];
 export const MASK_POLICIES = [0, 1, 2, 3, 4];
 export const VACCINE_POLICIES = [0, 1, 2, 3, 4, 5];
-export const VACCINATED_POPULATION = ["High", "Moderate", "Low"];
+export const VACCINATED_POPULATION = [
+  {
+    level: "High",
+    value: 3,
+  },
+  {
+    level: "Medium",
+    value: 2,
+  },
+  {
+    level: "Low",
+    value: 1,
+  },
+];
 export const CITIES = [
   "Adenau",
   "Andernach",
