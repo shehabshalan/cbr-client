@@ -70,7 +70,12 @@ function Layout(props) {
   return (
     <Box>
       <CssBaseline />
-      <AppBar component="nav">
+      <AppBar
+        component="nav"
+        sx={{
+          height: 60,
+        }}
+      >
         <Toolbar>
           <IconButton
             color="inherit"
