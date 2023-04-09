@@ -1,17 +1,15 @@
-import { Box, Paper, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import React from "react";
-import BoxBorder from "../components/BoxBorder";
 
 const About = () => {
   return (
-    <Paper
+    <Grid
+      container
+      spacing={2}
+      direction="column"
       sx={{
-        p: 4,
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        mb: 2,
+        maxWidth: 800,
+        margin: "auto",
       }}
     >
       <Box sx={{ mb: 4 }}>
@@ -32,7 +30,7 @@ const About = () => {
           are similar to the one you entered.
         </Typography>
       </Box>
-    </Paper>
+    </Grid>
   );
 };
 

@@ -13,8 +13,7 @@ import ListItemText from "@mui/material/ListItemText";
 import { MdMenu } from "react-icons/md";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { useNavigate } from "react-router-dom";
-import { Link } from "@mui/material";
+import { Link, useNavigate } from "react-router-dom";
 const drawerWidth = 240;
 const navItems = [
   {
@@ -96,13 +95,13 @@ function Layout(props) {
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
               <Link
-                href={item.href}
-                sx={{
+                to={item.href}
+                key={item.label}
+                style={{
                   color: "white",
                   textDecoration: "none",
-                  mx: 2,
+                  margin: "0 10px",
                 }}
-                key={item.label}
               >
                 {item.label}
               </Link>

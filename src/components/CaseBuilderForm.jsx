@@ -57,6 +57,7 @@ const CaseBuilderForm = () => {
           onSuccess: () => {
             formik.resetForm();
             alert("Case created successfully!");
+            window.scrollTo(0, 0);
           },
         },
         {
@@ -110,6 +111,7 @@ const CaseBuilderForm = () => {
     <Paper
       sx={{
         p: 4,
+        maxWidth: 800,
       }}
       component="form"
       onSubmit={formik.handleSubmit}

@@ -29,7 +29,7 @@ export const MASK_POLICIES = [
   },
   {
     level:
-      "Level 2: Required in some specified shared/public spaces outside the home with other people present, or some situations when social distancing not possible.",
+      "Level 2: Required in some specified shared/public spaces outside the home with other people present, or some situations when social distancing not possible",
     value: 2,
   },
   {
