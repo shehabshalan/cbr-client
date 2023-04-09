@@ -97,6 +97,7 @@ function Layout(props) {
                   textDecoration: "none",
                   mx: 2,
                 }}
+                key={item.label}
               >
                 {item.label}
               </Link>
