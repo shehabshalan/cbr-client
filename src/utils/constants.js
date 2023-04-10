@@ -86,6 +86,10 @@ export const VACCINATED_POPULATION = [
     level: "Low 30% or less",
     value: 1,
   },
+  {
+    level: "No vaccine",
+    value: 0,
+  },
 ];
 export const CITIES = [
   "Adenau",
