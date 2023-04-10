@@ -16,6 +16,9 @@ const schema = Yup.object().shape({
   problem_start_number_of_active_cases: Yup.number().required("Required"),
   problem_start_number_of_icu_active_cases: Yup.number().required("Required"),
   problem_start_number_of_deaths: Yup.number().required("Required"),
+  problem_end_number_of_active_cases: Yup.number().required("Required"),
+  problem_end_number_of_icu_active_cases: Yup.number().required("Required"),
+  problem_end_number_of_deaths: Yup.number().required("Required"),
   problem_vaccinated_population: Yup.string().required("Required"),
 });
 
@@ -28,24 +31,23 @@ const RecommenderForm = ({ createRecommendation, isLoading }) => {
       problem_start_number_of_active_cases: "",
       problem_start_number_of_icu_active_cases: "",
       problem_start_number_of_deaths: "",
+      problem_end_number_of_active_cases: "",
+      problem_end_number_of_icu_active_cases: "",
+      problem_end_number_of_deaths: "",
       problem_vaccinated_population: "",
+      problem_weather: "",
     },
     validationSchema: schema,
     onSubmit: (values) => {
-      createRecommendation(
-        values,
-        {
-          onSuccess: () => {
-            // scroll to the top of the page
-            window.scrollTo(0, 0);
-          },
+      createRecommendation(values, {
+        onSuccess: () => {
+          // scroll to the bottom of the page
+          window.scrollTo(0, document.body.scrollHeight);
         },
-        {
-          onError: () => {
-            alert("Failed to create a recommendation!");
-          },
-        }
-      );
+        onError: () => {
+          alert("Failed to create a recommendation!");
+        },
+      });
     },
   });
 
@@ -110,61 +112,115 @@ const RecommenderForm = ({ createRecommendation, isLoading }) => {
         )}
         onChange={(_, value) => formik.setFieldValue("city", value)}
       />
-      <TextField
-        sx={{ mb: 3 }}
-        fullWidth
-        id="problem_start_number_of_active_cases"
-        name="problem_start_number_of_active_cases"
-        label="Number of Active Cases at Start"
-        type="number"
-        value={formik.values.problem_start_number_of_active_cases}
-        onChange={formik.handleChange}
-        error={
-          formik.touched.problem_start_number_of_active_cases &&
-          Boolean(formik.errors.problem_start_number_of_active_cases)
-        }
-        helperText={
-          formik.touched.problem_start_number_of_active_cases &&
-          formik.errors.problem_start_number_of_active_cases
-        }
-      />
-      <TextField
-        sx={{ mb: 3 }}
-        fullWidth
-        id="problem_start_number_of_icu_active_cases"
-        name="problem_start_number_of_icu_active_cases"
-        label="Number of ICU Active Cases at Start"
-        type="number"
-        value={formik.values.problem_start_number_of_icu_active_cases}
-        onChange={formik.handleChange}
-        error={
-          formik.touched.problem_start_number_of_icu_active_cases &&
-          Boolean(formik.errors.problem_start_number_of_icu_active_cases)
-        }
-        helperText={
-          formik.touched.problem_start_number_of_icu_active_cases &&
-          formik.errors.problem_start_number_of_icu_active_cases
-        }
-      />
+      <Stack direction="row" spacing={2} mb={3}>
+        <TextField
+          fullWidth
+          id="problem_start_number_of_active_cases"
+          name="problem_start_number_of_active_cases"
+          label="Number of Active Cases at Start"
+          type="number"
+          value={formik.values.problem_start_number_of_active_cases}
+          onChange={formik.handleChange}
+          error={
+            formik.touched.problem_start_number_of_active_cases &&
+            Boolean(formik.errors.problem_start_number_of_active_cases)
+          }
+          helperText={
+            formik.touched.problem_start_number_of_active_cases &&
+            formik.errors.problem_start_number_of_active_cases
+          }
+        />
+        <TextField
+          fullWidth
+          id="problem_end_number_of_active_cases"
+          name="problem_end_number_of_active_cases"
+          label="Number of Active Cases at End"
+          type="number"
+          value={formik.values.problem_end_number_of_active_cases}
+          onChange={formik.handleChange}
+          error={
+            formik.touched.problem_end_number_of_active_cases &&
+            Boolean(formik.errors.problem_end_number_of_active_cases)
+          }
+          helperText={
+            formik.touched.problem_end_number_of_active_cases &&
+            formik.errors.problem_end_number_of_active_cases
+          }
+        />
+      </Stack>
+      <Stack direction="row" spacing={2} mb={3}>
+        <TextField
+          fullWidth
+          id="problem_start_number_of_icu_active_cases"
+          name="problem_start_number_of_icu_active_cases"
+          label="Number of ICU Active Cases at Start"
+          type="number"
+          value={formik.values.problem_start_number_of_icu_active_cases}
+          onChange={formik.handleChange}
+          error={
+            formik.touched.problem_start_number_of_icu_active_cases &&
+            Boolean(formik.errors.problem_start_number_of_icu_active_cases)
+          }
+          helperText={
+            formik.touched.problem_start_number_of_icu_active_cases &&
+            formik.errors.problem_start_number_of_icu_active_cases
+          }
+        />
+        <TextField
+          fullWidth
+          id="problem_end_number_of_icu_active_cases"
+          name="problem_end_number_of_icu_active_cases"
+          label="Number of ICU Active Cases at End"
+          type="number"
+          value={formik.values.problem_end_number_of_icu_active_cases}
+          onChange={formik.handleChange}
+          error={
+            formik.touched.problem_end_number_of_icu_active_cases &&
+            Boolean(formik.errors.problem_end_number_of_icu_active_cases)
+          }
+          helperText={
+            formik.touched.problem_end_number_of_icu_active_cases &&
+            formik.errors.problem_end_number_of_icu_active_cases
+          }
+        />
+      </Stack>
 
-      <TextField
-        sx={{ mb: 3 }}
-        fullWidth
-        id="problem_start_number_of_deaths"
-        name="problem_start_number_of_deaths"
-        label="Number of Deaths at Start"
-        type="number"
-        value={formik.values.problem_start_number_of_deaths}
-        onChange={formik.handleChange}
-        error={
-          formik.touched.problem_start_number_of_deaths &&
-          Boolean(formik.errors.problem_start_number_of_deaths)
-        }
-        helperText={
-          formik.touched.problem_start_number_of_deaths &&
-          formik.errors.problem_start_number_of_deaths
-        }
-      />
+      <Stack direction="row" spacing={2} mb={3}>
+        <TextField
+          fullWidth
+          id="problem_start_number_of_deaths"
+          name="problem_start_number_of_deaths"
+          label="Number of Deaths at Start"
+          type="number"
+          value={formik.values.problem_start_number_of_deaths}
+          onChange={formik.handleChange}
+          error={
+            formik.touched.problem_start_number_of_deaths &&
+            Boolean(formik.errors.problem_start_number_of_deaths)
+          }
+          helperText={
+            formik.touched.problem_start_number_of_deaths &&
+            formik.errors.problem_start_number_of_deaths
+          }
+        />
+        <TextField
+          fullWidth
+          id="problem_end_number_of_deaths"
+          name="problem_end_number_of_deaths"
+          label="Number of Deaths at End"
+          type="number"
+          value={formik.values.problem_end_number_of_deaths}
+          onChange={formik.handleChange}
+          error={
+            formik.touched.problem_end_number_of_deaths &&
+            Boolean(formik.errors.problem_end_number_of_deaths)
+          }
+          helperText={
+            formik.touched.problem_end_number_of_deaths &&
+            formik.errors.problem_end_number_of_deaths
+          }
+        />
+      </Stack>
       <TextField
         sx={{ mb: 3 }}
         fullWidth
@@ -185,6 +241,23 @@ const RecommenderForm = ({ createRecommendation, isLoading }) => {
       >
         {memoizedVaccinatedPopulation}
       </TextField>
+      <TextField
+        sx={{ mb: 3 }}
+        fullWidth
+        id="problem_weather"
+        name="problem_weather"
+        label="Average Temperature (Celsius) During Selected Period"
+        type="number"
+        value={formik.values.problem_weather}
+        onChange={formik.handleChange}
+        error={
+          formik.touched.problem_weather &&
+          Boolean(formik.errors.problem_weather)
+        }
+        helperText={
+          formik.touched.problem_weather && formik.errors.problem_weather
+        }
+      />
       <Button
         color="primary"
         variant="contained"

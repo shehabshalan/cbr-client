@@ -45,27 +45,23 @@ const CaseBuilderForm = () => {
       problem_end_number_of_icu_active_cases: "",
       problem_end_number_of_deaths: "",
       problem_vaccinated_population: "",
+      problem_weather: "",
       solution_lockdown_policy_level: "",
       solution_mask_policy_level: "",
       solution_vaccine_policy_level: "",
     },
     validationSchema: schema,
     onSubmit: (values) => {
-      createCase(
-        values,
-        {
-          onSuccess: () => {
-            formik.resetForm();
-            alert("Case created successfully!");
-            window.scrollTo(0, 0);
-          },
+      createCase(values, {
+        onSuccess: () => {
+          formik.resetForm();
+          alert("Case created successfully!");
+          window.scrollTo(0, 0);
         },
-        {
-          onError: () => {
-            alert("Failed to create case!");
-          },
-        }
-      );
+        onError: () => {
+          alert("Failed to create case!");
+        },
+      });
     },
   });
 
@@ -350,6 +346,23 @@ const CaseBuilderForm = () => {
       >
         {memoizedVaccinePolicies}
       </TextField>
+      <TextField
+        sx={{ mb: 3 }}
+        fullWidth
+        id="problem_weather"
+        name="problem_weather"
+        label="Average Temperature (Celsius) During Selected Period"
+        type="number"
+        value={formik.values.problem_weather}
+        onChange={formik.handleChange}
+        error={
+          formik.touched.problem_weather &&
+          Boolean(formik.errors.problem_weather)
+        }
+        helperText={
+          formik.touched.problem_weather && formik.errors.problem_weather
+        }
+      />
 
       <Button
         color="primary"
