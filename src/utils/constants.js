@@ -91,6 +91,37 @@ export const VACCINATED_POPULATION = [
     value: 0,
   },
 ];
+
+export const POPULATION_DENSITY = [
+  {
+    level: "High 1500 or more",
+    value: 3,
+  },
+  {
+    level: "Medium 300 to 1499",
+    value: 2,
+  },
+  {
+    level: "Low 300 or less",
+    value: 1,
+  },
+];
+
+export const MEDIAN_AGE_DISTRIBUTION = [
+  {
+    level: "Older 30 or more",
+    value: 3,
+  },
+  {
+    level: "Mixed 20 to 30",
+    value: 2,
+  },
+  {
+    level: "Younger 20 or less",
+    value: 1,
+  },
+];
+
 export const CITIES = [
   "Adenau",
   "Andernach",

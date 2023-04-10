@@ -10,7 +10,15 @@ import {
   Tooltip,
   Button,
 } from "@mui/material";
-
+import {
+  VACCINATED_POPULATION,
+  LOCKDOWN_POLICIES,
+  MASK_POLICIES,
+  VACCINE_POLICIES,
+  POPULATION_DENSITY,
+  MEDIAN_AGE_DISTRIBUTION,
+} from "../utils/constants";
+import { findLevel } from "../utils/findLevel";
 const CasesTable = () => {
   const { data: cases, isLoading, isError } = useGetCases();
 
@@ -26,6 +34,7 @@ const CasesTable = () => {
     return <div>No cases found</div>;
   }
 
+  console.log();
   return (
     <TableContainer
       component={Paper}
@@ -83,13 +92,16 @@ const CasesTable = () => {
               <TableCell align="right">{row.city}</TableCell>
               <TableCell align="right">{row.problem_population}</TableCell>
               <TableCell align="right">
-                {row.problem_population_density}
+                {findLevel(POPULATION_DENSITY, row?.problem_population_density)}
               </TableCell>
               <TableCell align="right">
-                {row.problem_age_distribution}
+                {findLevel(
+                  MEDIAN_AGE_DISTRIBUTION,
+                  row?.problem_age_distribution
+                )}
               </TableCell>
               <TableCell align="right">
-                <Tooltip title={row.problem_description}>
+                <Tooltip title={row.problem_description} disableInteractive>
                   <Button>View</Button>
                 </Tooltip>
               </TableCell>
@@ -113,23 +125,50 @@ const CasesTable = () => {
               </TableCell>
 
               <TableCell align="right">
-                {row.problem_vaccinated_population}
+                {findLevel(
+                  VACCINATED_POPULATION,
+                  row?.problem_vaccinated_population
+                )}
               </TableCell>
               <TableCell align="right">{row.problem_infection_rate}</TableCell>
               <TableCell align="right">{row.problem_mortality_rate}</TableCell>
               <TableCell align="right">
-                <Tooltip title={row.solution_description}>
+                <Tooltip title={row.solution_description} disableInteractive>
                   <Button>View</Button>
                 </Tooltip>
               </TableCell>
               <TableCell align="right">
-                {row.solution_lockdown_policy_level}
+                <Tooltip
+                  title={findLevel(
+                    LOCKDOWN_POLICIES,
+                    row?.solution_lockdown_policy_level
+                  )}
+                  disableInteractive
+                >
+                  <Button>{row.solution_lockdown_policy_level}</Button>
+                </Tooltip>
               </TableCell>
               <TableCell align="right">
-                {row.solution_mask_policy_level}
+                <Tooltip
+                  title={findLevel(
+                    MASK_POLICIES,
+                    row?.solution_mask_policy_level
+                  )}
+                  disableInteractive
+                >
+                  <Button>{row.solution_mask_policy_level}</Button>
+                </Tooltip>
               </TableCell>
               <TableCell align="right">
-                {row.solution_vaccine_policy_level}
+                <Tooltip
+                  title={findLevel(
+                    VACCINE_POLICIES,
+                    row?.solution_vaccine_policy_level
+                  )}
+                  disableInteractive
+                >
+                  <Button>{row.solution_vaccine_policy_level}</Button>
+                </Tooltip>
               </TableCell>
               <TableCell align="right">{row.solution_effectiveness}</TableCell>
             </TableRow>
