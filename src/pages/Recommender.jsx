@@ -1,16 +1,15 @@
 import { Alert, AlertTitle, Grid, Typography } from "@mui/material";
 import RecommenderForm from "../components/RecommenderForm";
 import { useCreateRecommendation } from "../hooks/useCreateRecommendation";
-import Recommendation from "../components/Recommendation";
 
 const Recommender = () => {
   const {
     mutate: createRecommendation,
     isLoading,
-    isSuccess,
     data: recommendation,
   } = useCreateRecommendation();
 
+  console.log(recommendation);
   return (
     <Grid
       container
@@ -34,11 +33,11 @@ const Recommender = () => {
           </Typography>
         </Alert>
       </Grid>
-      {isSuccess && (
+      {/* {isSuccess && (
         <Grid item xs={12}>
           <Recommendation recommendation={recommendation} />
         </Grid>
-      )}
+      )} */}
       <Grid item xs={12}>
         <RecommenderForm
           createRecommendation={createRecommendation}
