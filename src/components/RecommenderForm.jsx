@@ -20,6 +20,8 @@ const schema = Yup.object().shape({
   problem_end_number_of_icu_active_cases: Yup.number().required("Required"),
   problem_end_number_of_deaths: Yup.number().required("Required"),
   problem_vaccinated_population: Yup.string().required("Required"),
+  problem_temperature: Yup.number().required("Required"),
+  problem_humidity: Yup.number().required("Required"),
 });
 
 const RecommenderForm = ({ createRecommendation, isLoading }) => {
@@ -35,7 +37,8 @@ const RecommenderForm = ({ createRecommendation, isLoading }) => {
       problem_end_number_of_icu_active_cases: "",
       problem_end_number_of_deaths: "",
       problem_vaccinated_population: "",
-      problem_weather: "",
+      problem_temperature: "",
+      problem_humidity: "",
     },
     validationSchema: schema,
     onSubmit: (values) => {
@@ -241,23 +244,43 @@ const RecommenderForm = ({ createRecommendation, isLoading }) => {
       >
         {memoizedVaccinatedPopulation}
       </TextField>
-      <TextField
-        sx={{ mb: 3 }}
-        fullWidth
-        id="problem_weather"
-        name="problem_weather"
-        label="Average Temperature (Celsius) During Selected Period"
-        type="number"
-        value={formik.values.problem_weather}
-        onChange={formik.handleChange}
-        error={
-          formik.touched.problem_weather &&
-          Boolean(formik.errors.problem_weather)
-        }
-        helperText={
-          formik.touched.problem_weather && formik.errors.problem_weather
-        }
-      />
+      <Stack direction="row" spacing={2} mb={3}>
+        <TextField
+          sx={{ mb: 3 }}
+          fullWidth
+          id="problem_temperature"
+          name="problem_temperature"
+          label="Average Temperature (Celsius) During Selected Period"
+          type="number"
+          value={formik.values.problem_temperature}
+          onChange={formik.handleChange}
+          error={
+            formik.touched.problem_temperature &&
+            Boolean(formik.errors.problem_temperature)
+          }
+          helperText={
+            formik.touched.problem_temperature &&
+            formik.errors.problem_temperature
+          }
+        />
+        <TextField
+          sx={{ mb: 3 }}
+          fullWidth
+          id="problem_humidity"
+          name="problem_humidity"
+          label="Average Humidity (%) During Selected Period"
+          type="number"
+          value={formik.values.problem_humidity}
+          onChange={formik.handleChange}
+          error={
+            formik.touched.problem_humidity &&
+            Boolean(formik.errors.problem_humidity)
+          }
+          helperText={
+            formik.touched.problem_humidity && formik.errors.problem_humidity
+          }
+        />
+      </Stack>
       <Button
         color="primary"
         variant="contained"
