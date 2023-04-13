@@ -26,8 +26,8 @@ const schema = Yup.object().shape({
   problem_end_number_of_icu_active_cases: Yup.number().required("Required"),
   problem_end_number_of_deaths: Yup.number().required("Required"),
   problem_vaccinated_population: Yup.string().required("Required"),
-  problem_temperature: Yup.number().required("Required"),
-  problem_humidity: Yup.number().required("Required"),
+  // problem_temperature: Yup.number().required("Required"),
+  // problem_humidity: Yup.number().required("Required"),
   solution_lockdown_policy_level: Yup.number().required("Required"),
   solution_mask_policy_level: Yup.number().required("Required"),
   solution_vaccine_policy_level: Yup.number().required("Required"),
@@ -59,7 +59,7 @@ const CaseBuilderForm = () => {
         onSuccess: () => {
           formik.resetForm();
           alert("Case created successfully!");
-          window.scrollTo(0, 0);
+          window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
         },
         onError: () => {
           alert("Failed to create case!");

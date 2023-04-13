@@ -20,8 +20,8 @@ const schema = Yup.object().shape({
   problem_end_number_of_icu_active_cases: Yup.number().required("Required"),
   problem_end_number_of_deaths: Yup.number().required("Required"),
   problem_vaccinated_population: Yup.string().required("Required"),
-  problem_temperature: Yup.number().required("Required"),
-  problem_humidity: Yup.number().required("Required"),
+  // problem_temperature: Yup.number().required("Required"),
+  // problem_humidity: Yup.number().required("Required"),
 });
 
 const RecommenderForm = ({ createRecommendation, isLoading }) => {
@@ -44,8 +44,8 @@ const RecommenderForm = ({ createRecommendation, isLoading }) => {
     onSubmit: (values) => {
       createRecommendation(values, {
         onSuccess: () => {
-          // scroll to the bottom of the page
-          window.scrollTo(0, document.body.scrollHeight);
+          formik.resetForm();
+          window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
         },
         onError: () => {
           alert("Failed to create a recommendation!");
