@@ -17,6 +17,7 @@ import {
   VACCINE_POLICIES,
   POPULATION_DENSITY,
   MEDIAN_AGE_DISTRIBUTION,
+  EFFECTIVNESS,
 } from "../utils/constants";
 import { findLevel } from "../utils/findLevel";
 const CasesTable = () => {
@@ -47,35 +48,76 @@ const CasesTable = () => {
         sx={{
           width: "max-content",
         }}
+        stickyHeader
       >
         <TableHead>
           <TableRow>
-            <TableCell>Case ID</TableCell>
-            <TableCell align="right">Start Date</TableCell>
-            <TableCell align="right">End Date</TableCell>
-            <TableCell align="right">City</TableCell>
-            <TableCell align="right">Population</TableCell>
-            <TableCell align="right">Population Density</TableCell>
-            <TableCell align="right">Age Distribution</TableCell>
-            <TableCell align="right">Problem Description</TableCell>
-            <TableCell align="right">Number of Active Cases at Start</TableCell>
-            <TableCell align="right">Number of Active Cases at End</TableCell>
-            <TableCell align="right">
-              Number of ICU Active Cases at Start
+            <TableCell variant="head">
+              <b>Case ID</b>
             </TableCell>
             <TableCell align="right">
-              Number of ICU Active Cases at End
+              <b>Start Date</b>
             </TableCell>
-            <TableCell align="right">Number of Deaths at Start</TableCell>
-            <TableCell align="right">Number of Deaths at End</TableCell>
-            <TableCell align="right">Vaccinated Population</TableCell>
-            <TableCell align="right">Infection Rate</TableCell>
-            <TableCell align="right">Mortality Rate</TableCell>
-            <TableCell align="right">Solution Description</TableCell>
-            <TableCell align="right">Lockdown Policy</TableCell>
-            <TableCell align="right">Mask Policy</TableCell>
-            <TableCell align="right">Vaccination Policy</TableCell>
-            <TableCell align="right">Solution Effectiveness</TableCell>
+            <TableCell align="right">
+              <b>End Date</b>
+            </TableCell>
+            <TableCell align="right">
+              <b>City</b>
+            </TableCell>
+            <TableCell align="right">
+              <b>Population</b>
+            </TableCell>
+            <TableCell align="right">
+              <b>Population Density</b>
+            </TableCell>
+            <TableCell align="right">
+              <b>Age Distribution</b>
+            </TableCell>
+            <TableCell align="right">
+              <b>Problem Description</b>
+            </TableCell>
+            <TableCell align="right">
+              <b>Number of Active Cases at Start</b>
+            </TableCell>
+            <TableCell align="right">
+              <b>Number of Active Cases at End</b>
+            </TableCell>
+            <TableCell align="right">
+              <b>Number of ICU Active Cases at Start</b>
+            </TableCell>
+            <TableCell align="right">
+              <b>Number of ICU Active Cases at End</b>
+            </TableCell>
+            <TableCell align="right">
+              <b>Number of Deaths at Start</b>
+            </TableCell>
+            <TableCell align="right">
+              <b>Number of Deaths at End</b>
+            </TableCell>
+            <TableCell align="right">
+              <b>Vaccinated Population</b>
+            </TableCell>
+            <TableCell align="right">
+              <b>Infection Rate</b>
+            </TableCell>
+            <TableCell align="right">
+              <b>Mortality Rate</b>
+            </TableCell>
+            <TableCell align="right">
+              <b>Solution Description</b>
+            </TableCell>
+            <TableCell align="right">
+              <b>Lockdown Policy</b>
+            </TableCell>
+            <TableCell align="right">
+              <b>Mask Policy</b>
+            </TableCell>
+            <TableCell align="right">
+              <b>Vaccination Policy</b>
+            </TableCell>
+            <TableCell align="right">
+              <b>Solution Effectiveness</b>
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -170,7 +212,9 @@ const CasesTable = () => {
                   <Button>{row.solution_vaccine_policy_level}</Button>
                 </Tooltip>
               </TableCell>
-              <TableCell align="right">{row.solution_effectiveness}</TableCell>
+              <TableCell align="right">
+                {findLevel(EFFECTIVNESS, row?.solution_effectiveness)}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
