@@ -5,7 +5,7 @@ const Recommendation = ({ recommendation }) => {
     <Alert severity="success">
       <AlertTitle>Recommendation</AlertTitle>
       <Typography variant="body1" align="justify">
-        {recommendation.data}
+        {recommendation}
       </Typography>
     </Alert>
   );
