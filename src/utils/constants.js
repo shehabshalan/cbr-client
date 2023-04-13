@@ -122,6 +122,21 @@ export const MEDIAN_AGE_DISTRIBUTION = [
   },
 ];
 
+export const EFFECTIVNESS = [
+  {
+    level: "High",
+    value: 3,
+  },
+  {
+    level: "Medium",
+    value: 2,
+  },
+  {
+    level: "Low",
+    value: 1,
+  },
+];
+
 export const CITIES = [
   "Adenau",
   "Andernach",
