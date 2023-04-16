@@ -98,10 +98,19 @@ const CasesTable = () => {
               <b>Vaccinated Population</b>
             </TableCell>
             <TableCell align="right">
-              <b>Infection Rate</b>
+              <b>
+                Average Temperature (<sup>o</sup>C)
+              </b>
             </TableCell>
             <TableCell align="right">
-              <b>Mortality Rate</b>
+              <b>Average Humidity (%)</b>
+            </TableCell>
+
+            <TableCell align="right">
+              <b>Infection Rate (%)</b>
+            </TableCell>
+            <TableCell align="right">
+              <b>Mortality Rate (%)</b>
             </TableCell>
             <TableCell align="right">
               <b>Solution Description</b>
@@ -123,7 +132,7 @@ const CasesTable = () => {
         <TableBody>
           {cases.map((row) => (
             <TableRow
-              key={row.case_id}
+              key={row.id}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
               <TableCell component="th" scope="row">
@@ -172,8 +181,14 @@ const CasesTable = () => {
                   row?.problem_vaccinated_population
                 )}
               </TableCell>
-              <TableCell align="right">{row.problem_infection_rate}</TableCell>
-              <TableCell align="right">{row.problem_mortality_rate}</TableCell>
+              <TableCell align="right">
+                {row.problem_average_temprature}
+              </TableCell>
+              <TableCell align="right">
+                {row.problem_average_humidity}%
+              </TableCell>
+              <TableCell align="right">{row.problem_infection_rate}%</TableCell>
+              <TableCell align="right">{row.problem_mortality_rate}%</TableCell>
               <TableCell align="right">
                 <Tooltip title={row.solution_description} disableInteractive>
                   <Button>View</Button>
