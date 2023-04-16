@@ -26,8 +26,8 @@ const schema = Yup.object().shape({
   problem_end_number_of_icu_active_cases: Yup.number().required("Required"),
   problem_end_number_of_deaths: Yup.number().required("Required"),
   problem_vaccinated_population: Yup.string().required("Required"),
-  // problem_temperature: Yup.number().required("Required"),
-  // problem_humidity: Yup.number().required("Required"),
+  problem_average_temprature: Yup.number().required("Required"),
+  problem_average_humidity: Yup.number().required("Required"),
   solution_lockdown_policy_level: Yup.number().required("Required"),
   solution_mask_policy_level: Yup.number().required("Required"),
   solution_vaccine_policy_level: Yup.number().required("Required"),
@@ -47,8 +47,8 @@ const CaseBuilderForm = () => {
       problem_end_number_of_icu_active_cases: "",
       problem_end_number_of_deaths: "",
       problem_vaccinated_population: "",
-      problem_temperature: "",
-      problem_humidity: "",
+      problem_average_temprature: "",
+      problem_average_humidity: "",
       solution_lockdown_policy_level: "",
       solution_mask_policy_level: "",
       solution_vaccine_policy_level: "",
@@ -289,38 +289,37 @@ const CaseBuilderForm = () => {
       </TextField>
       <Stack direction="row" spacing={2} mb={3}>
         <TextField
-          sx={{ mb: 3 }}
           fullWidth
-          id="problem_temperature"
-          name="problem_temperature"
+          id="problem_average_temprature"
+          name="problem_average_temprature"
           label="Average Temperature (Celsius) During Selected Period"
           type="number"
-          value={formik.values.problem_temperature}
+          value={formik.values.problem_average_temprature}
           onChange={formik.handleChange}
           error={
-            formik.touched.problem_temperature &&
-            Boolean(formik.errors.problem_temperature)
+            formik.touched.problem_average_temprature &&
+            Boolean(formik.errors.problem_average_temprature)
           }
           helperText={
-            formik.touched.problem_temperature &&
-            formik.errors.problem_temperature
+            formik.touched.problem_average_temprature &&
+            formik.errors.problem_average_temprature
           }
         />
         <TextField
-          sx={{ mb: 3 }}
           fullWidth
-          id="problem_humidity"
-          name="problem_humidity"
+          id="problem_average_humidity"
+          name="problem_average_humidity"
           label="Average Humidity (%) During Selected Period"
           type="number"
-          value={formik.values.problem_humidity}
+          value={formik.values.problem_average_humidity}
           onChange={formik.handleChange}
           error={
-            formik.touched.problem_humidity &&
-            Boolean(formik.errors.problem_humidity)
+            formik.touched.problem_average_humidity &&
+            Boolean(formik.errors.problem_average_humidity)
           }
           helperText={
-            formik.touched.problem_humidity && formik.errors.problem_humidity
+            formik.touched.problem_average_humidity &&
+            formik.errors.problem_average_humidity
           }
         />
       </Stack>
