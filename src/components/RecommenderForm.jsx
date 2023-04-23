@@ -69,7 +69,7 @@ const RecommenderForm = ({ createRecommendation, isLoading }) => {
           fullWidth
           id="start_date"
           name="start_date"
-          label="Start Date"
+          label="Start Date (Required)"
           focused
           type="date"
           value={formik.values.start_date}
@@ -99,7 +99,7 @@ const RecommenderForm = ({ createRecommendation, isLoading }) => {
         renderInput={(params) => (
           <TextField
             {...params}
-            label="City"
+            label="City (Required)"
             value={formik.values.city}
             error={formik.touched.city && Boolean(formik.errors.city)}
             helperText={formik.touched.city && formik.errors.city}
@@ -148,7 +148,7 @@ const RecommenderForm = ({ createRecommendation, isLoading }) => {
           fullWidth
           id="problem_start_number_of_icu_active_cases"
           name="problem_start_number_of_icu_active_cases"
-          label="Number of ICU Active Cases at Start"
+          label="Number of ICU Active Cases at Start (Required)"
           type="number"
           value={formik.values.problem_start_number_of_icu_active_cases}
           onChange={formik.handleChange}
@@ -185,7 +185,7 @@ const RecommenderForm = ({ createRecommendation, isLoading }) => {
           fullWidth
           id="problem_start_number_of_deaths"
           name="problem_start_number_of_deaths"
-          label="Number of Deaths at Start"
+          label="Number of Deaths at Start (Required)"
           type="number"
           value={formik.values.problem_start_number_of_deaths}
           onChange={formik.handleChange}
