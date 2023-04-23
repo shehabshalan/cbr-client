@@ -8,7 +8,7 @@ const Recommender = () => {
     mutate: createRecommendation,
     isLoading,
     isSuccess,
-    data: recommendation,
+    data,
   } = useCreateRecommendation();
 
   return (
@@ -38,7 +38,7 @@ const Recommender = () => {
       </Grid>
       {isSuccess ? (
         <Grid item xs={12}>
-          <Recommendation recommendation={recommendation} />
+          <Recommendation data={data} />
         </Grid>
       ) : null}
       <Grid item xs={12}>
