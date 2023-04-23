@@ -1,12 +1,24 @@
 import React from "react";
 import { Alert, AlertTitle, Typography } from "@mui/material";
-const Recommendation = ({ recommendation }) => {
+import ReactMarkdown from "react-markdown";
+const Recommendation = ({ data }) => {
+  console.log(data);
   return (
     <Alert severity="success">
-      <AlertTitle>Recommendation</AlertTitle>
-      <Typography variant="body1" align="justify">
-        {recommendation}
-      </Typography>
+      <AlertTitle
+        sx={{
+          fontWeight: "bold",
+        }}
+      >
+        Recommendation
+      </AlertTitle>
+      <ReactMarkdown>{data?.recommendation}</ReactMarkdown>
+      <Typography sx={{ fontWeight: "bold" }}>Similar cases:</Typography>
+      {data?.most_similar.map((item, index) => (
+        <ReactMarkdown key={index}>{`Case ${
+          index + 1
+        }: ${item}`}</ReactMarkdown>
+      ))}
     </Alert>
   );
 };
