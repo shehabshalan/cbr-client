@@ -16,7 +16,6 @@ import {
   MASK_POLICIES,
   VACCINE_POLICIES,
   POPULATION_DENSITY,
-  MEDIAN_AGE_DISTRIBUTION,
   EFFECTIVNESS,
 } from "../utils/constants";
 import { findLevel } from "../utils/findLevel";
@@ -71,7 +70,7 @@ const CasesTable = () => {
               <b>Population Density</b>
             </TableCell>
             <TableCell align="right">
-              <b>Age Distribution</b>
+              <b>Median Age</b>
             </TableCell>
             <TableCell align="right">
               <b>Problem Description</b>
@@ -146,10 +145,7 @@ const CasesTable = () => {
                 {findLevel(POPULATION_DENSITY, row?.problem_population_density)}
               </TableCell>
               <TableCell align="right">
-                {findLevel(
-                  MEDIAN_AGE_DISTRIBUTION,
-                  row?.problem_age_distribution
-                )}
+                {row?.problem_age_distribution}
               </TableCell>
               <TableCell align="right">
                 <Tooltip title={row.problem_description} disableInteractive>
