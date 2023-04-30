@@ -26,7 +26,7 @@ const schema = Yup.object().shape({
   problem_end_number_of_icu_active_cases: Yup.number().required("Required"),
   problem_end_number_of_deaths: Yup.number().required("Required"),
   problem_vaccinated_population: Yup.string().required("Required"),
-  problem_average_temprature: Yup.number().required("Required"),
+  problem_average_temperature: Yup.number().required("Required"),
   problem_average_humidity: Yup.number().required("Required"),
   solution_lockdown_policy_level: Yup.number().required("Required"),
   solution_mask_policy_level: Yup.number().required("Required"),
@@ -47,7 +47,7 @@ const CaseBuilderForm = () => {
       problem_end_number_of_icu_active_cases: "",
       problem_end_number_of_deaths: "",
       problem_vaccinated_population: "",
-      problem_average_temprature: "",
+      problem_average_temperature: "",
       problem_average_humidity: "",
       solution_lockdown_policy_level: "",
       solution_mask_policy_level: "",
@@ -290,19 +290,19 @@ const CaseBuilderForm = () => {
       <Stack direction="row" spacing={2} mb={3}>
         <TextField
           fullWidth
-          id="problem_average_temprature"
-          name="problem_average_temprature"
+          id="problem_average_temperature"
+          name="problem_average_temperature"
           label="Average Temperature (Celsius) During Selected Period"
           type="number"
-          value={formik.values.problem_average_temprature}
+          value={formik.values.problem_average_temperature}
           onChange={formik.handleChange}
           error={
-            formik.touched.problem_average_temprature &&
-            Boolean(formik.errors.problem_average_temprature)
+            formik.touched.problem_average_temperature &&
+            Boolean(formik.errors.problem_average_temperature)
           }
           helperText={
-            formik.touched.problem_average_temprature &&
-            formik.errors.problem_average_temprature
+            formik.touched.problem_average_temperature &&
+            formik.errors.problem_average_temperature
           }
         />
         <TextField

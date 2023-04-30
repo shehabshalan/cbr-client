@@ -29,7 +29,7 @@ const RecommenderForm = ({ createRecommendation, isLoading }) => {
       problem_end_number_of_icu_active_cases: "",
       problem_end_number_of_deaths: "",
       problem_vaccinated_population: "",
-      problem_average_temprature: "",
+      problem_average_temperature: "",
       problem_average_humidity: "",
     },
     validationSchema: schema,
@@ -240,19 +240,19 @@ const RecommenderForm = ({ createRecommendation, isLoading }) => {
         <TextField
           sx={{ mb: 3 }}
           fullWidth
-          id="problem_average_temprature"
-          name="problem_average_temprature"
+          id="problem_average_temperature"
+          name="problem_average_temperature"
           label="Average Temperature (Celsius) During Selected Period"
           type="number"
-          value={formik.values.problem_average_temprature}
+          value={formik.values.problem_average_temperature}
           onChange={formik.handleChange}
           error={
-            formik.touched.problem_average_temprature &&
-            Boolean(formik.errors.problem_average_temprature)
+            formik.touched.problem_average_temperature &&
+            Boolean(formik.errors.problem_average_temperature)
           }
           helperText={
-            formik.touched.problem_average_temprature &&
-            formik.errors.problem_average_temprature
+            formik.touched.problem_average_temperature &&
+            formik.errors.problem_average_temperature
           }
         />
         <TextField

@@ -178,7 +178,7 @@ const CasesTable = () => {
                 )}
               </TableCell>
               <TableCell align="right">
-                {row.problem_average_temprature}
+                {row.problem_average_temperature}
               </TableCell>
               <TableCell align="right">
                 {row.problem_average_humidity}%
